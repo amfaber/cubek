@@ -7,6 +7,7 @@ mod depthwise;
 mod direct;
 mod im2col;
 mod multi_level;
+mod simt;
 mod split;
 mod unit;
 

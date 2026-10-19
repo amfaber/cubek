@@ -19,6 +19,8 @@ pub enum ConvSetupError {
     },
     /// A caller-provided convolution strategy cannot form valid launch geometry.
     InvalidConfig(InvalidConfigError),
+    /// A kernel does not run this convolution, for the reason given.
+    Unsupported(&'static str),
     Unknown,
     Launch(LaunchError),
 }
@@ -57,6 +59,7 @@ impl Debug for ConvSetupError {
             ConvSetupError::InvalidConfig(err) => {
                 write!(f, "Invalid convolution config: {err}")
             }
+            ConvSetupError::Unsupported(reason) => write!(f, "Unsupported: {reason}"),
             ConvSetupError::Unknown => write!(f, "Unknown"),
             ConvSetupError::Launch(err) => write!(f, "Launch error {err:?}"),
         }

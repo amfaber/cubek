@@ -31,3 +31,9 @@ pub use kernels::im2col::{Im2colTensors, launch_im2col};
 pub use kernels::backward_weight::depthwise::{
     DepthwiseWeightBackwardTensors, launch_depthwise_weight_backward,
 };
+
+// The SIMT convolution is, like the direct one, a kernel of its own rather than a matmul routine.
+pub use kernels::simt::{
+    SimtBackwardDataTensors, SimtBackwardWeightTensors, SimtTensors, SimtTiling, launch_simt,
+    launch_simt_backward_data, launch_simt_backward_weight,
+};
